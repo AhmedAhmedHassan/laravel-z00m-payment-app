@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Admin Routs
+Route::middleware(['auth','role:admin'])->name('admin.')->prefix('admin')->group(function (){
+    Route::view('/','web.admin.index')->name('index');
+});
+
+// User Routs
+Route::middleware(['auth','role:user'])->name('user.')->prefix('user')->group(function (){
+    Route::view('/','web.user.index')->name('index');
+});
+
+
+require __DIR__.'/auth.php';
