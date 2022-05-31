@@ -37,7 +37,7 @@
         <!-- END: Custom CSS-->
         @yield('style')
     </head>
-    <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static   menu-collapsed" data-open="click" data-menu="vertical-menu-modern" data-col="">
+    <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="">
         @include('includes.dashboard.header')
         @include('includes.dashboard.sidebar')
         @yield('content')

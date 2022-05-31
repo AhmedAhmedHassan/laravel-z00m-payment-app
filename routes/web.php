@@ -20,6 +20,7 @@ Route::get('/', function () {
 // Admin Routes
 Route::middleware(['auth','role:admin'])->name('admin.')->prefix('admin')->group(function (){
     Route::view('/','web.admin.index')->name('index');
+    Route::resource('roles',App\Http\Controllers\Web\Admin\RoleController::class);
 });
 
 // User Routes
