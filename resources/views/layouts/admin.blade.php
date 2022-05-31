@@ -14,6 +14,12 @@
         <link rel="stylesheet" type="text/css" href="{{asset('dashboard/vendors/css/vendors.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('dashboard/vendors/css/charts/apexcharts.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('dashboard/vendors/css/extensions/toastr.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('dashboard/vendors/css/forms/select/select2.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('dashboard/vendors/css/tables/datatable/dataTables.bootstrap5.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('dashboard/vendors/css/tables/datatable/responsive.bootstrap5.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('dashboard/vendors/css/tables/datatable/buttons.bootstrap5.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('dashboard/vendors/css/tables/datatable/rowGroup.bootstrap5.min.css')}}">
+        
         <!-- END: Vendor CSS-->
 
         <!-- BEGIN: Theme CSS-->
@@ -40,7 +46,23 @@
     <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="">
         @include('includes.dashboard.header')
         @include('includes.dashboard.sidebar')
-        @yield('content')
+   
+        <!-- BEGIN: Content-->
+        <div class="app-content content ">
+            <div class="content-overlay"></div>
+            <div class="header-navbar-shadow"></div>
+            <div class="content-wrapper container-xxl p-0">
+                <div class="content-header row">
+                </div>
+                <div class="content-body">
+                    <section class="app-user-list">
+                        @yield('content')
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- END: Content-->
+       
         <div class="sidenav-overlay"></div>
         <div class="drag-target"></div>
 
@@ -52,11 +74,24 @@
         <!-- END: Footer-->
         <!-- BEGIN: Vendor JS-->
         <script src="{{asset('dashboard/vendors/js/vendors.min.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/forms/select/select2.full.min.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/dataTables.bootstrap5.min.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/responsive.bootstrap5.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/jszip.min.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/pdfmake.min.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/vfs_fonts.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/buttons.html5.min.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/buttons.print.min.js')}}"></script>
+        <script src="{{asset('dashboard/vendors/js/tables/datatable/dataTables.rowGroup.min.js')}}"></script>
         <!-- BEGIN Vendor JS-->
 
         <!-- BEGIN: Page Vendor JS-->
         <script src="{{asset('dashboard/vendors/js/extensions/toastr.min.js')}}"></script>
         <!-- END: Page Vendor JS-->
+        <script src="{{asset('dashboard/js/scripts/pages/app-user-list.js')}}"></script>
 
         <!-- BEGIN: Theme JS-->
         <script src="{{asset('dashboard/js/core/app-menu.js')}}"></script>
@@ -86,5 +121,6 @@
                 }
             })
         </script>
+        @yield('admin-js')
     </body>
 </html>   
