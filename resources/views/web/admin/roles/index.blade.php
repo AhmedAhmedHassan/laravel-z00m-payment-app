@@ -23,6 +23,7 @@
                 <tbody id="tableBody"></tbody>
             </table>
         </div>
+
         <!-- Modal to add new role starts-->
         <div class="modal modal-slide-in new-user-modal fade" id="modals-slide-in">
             <div class="modal-dialog">
@@ -42,6 +43,7 @@
                 </form>
             </div>
         </div>
+
         <!-- Modal to add new role Ends-->
     </div>
     <!-- list and filter end -->
@@ -61,9 +63,7 @@
                                         ${++count}
                                         </td>
                                         <td>
-                                        <form method="post" class="edit-form-${resultRow.id}">
-                                            <input type="text" value="${resultRow.name}" class="form-control w-25">
-                                        </form>
+                                            <input type="text" value="${resultRow.name}" class="form-control w-25 text-edit" data-id=${resultRow.id}>
                                         </td>
                                     </tr>`;
                     $('#tableBody').append(tableRow);
@@ -71,7 +71,7 @@
             }
         });
 
-        // Create New With Ajax
+        // Create New Role With Ajax
         $('#submit').on('click',function(e){
             e.preventDefault();
             var url = "{{ route('admin.roles.store') }}";
@@ -92,21 +92,82 @@
                                         ${++count}
                                         </td>
                                         <td>
-                                        <form method="post" class="edit-form-${response.data.id}">
-                                            <input type="text" value="${response.data.name}" class="form-control w-25">
-                                        </form>
+                                            <input type="text" value="${response.data.name}" class="form-control w-25 text-edit" data-id=${response.data.id}>
                                         </td>
                                     </tr>`;
                     $('#tableBody').append(tableRow);
                     $('#modals-slide-in').modal('hide');
                     }
+                    // Success Message
+                        toastr['success'](
+                        'New Role Has Been Created Successfully',
+                        {
+                            closeButton: true,
+                            tapToDismiss: true,
+                        }
+                        );
                 },
                 error: function(response) {
-                   console.log(response.responseJSON.message)
+                    // error Message
+                    toastr['error'](
+                    'Something Wen Wrong!',
+                    {
+                        closeButton: true,
+                        tapToDismiss: false,
+                    });
                 }
             });
-        })
+        });
 
+        // Update Roles
+        // i'm using timeout function in order to apply events on the appended elements
+        setTimeout(() => { 
+            // on key press event
+             $('.text-edit').on('keypress',function(e){
+                var key = e.which;
+                // if the entered key is the enter key in the keyboard (13) then submit the edit form
+                if(key == 13){
+                    var id = $(this).attr('data-id');
+                    var name = $(this).val();
+                    var url = "{{ route('admin.roles.update',":id") }}";
+                    url= url.replace(':id', id)
+                    let _token   = $('meta[name="csrf-token"]').attr('content');
+                    
+                    $.ajax({
+                        url: url,
+                        type: "PUT",
+                        data: {
+                            name: name,
+                            id:id,
+                            _token: _token
+                            },
+                        success: function(response) {
+                        
+                            // Success Message
+                                toastr['success'](
+                                'Role Updated Successfully',
+                                {
+                                    closeButton: true,
+                                    tapToDismiss: true,
+                                }
+                                );
+                        },
+                        error: function(response) {
+                            // error Message
+                            toastr['error'](
+                            'Something Wen Wrong!',
+                            {
+                                closeButton: true,
+                                tapToDismiss: false,
+                            });
+                        }
+                    });
+                }
+             });
+        }, 2000);
     })
+    
+    
+ 
 </script>
 @endsection

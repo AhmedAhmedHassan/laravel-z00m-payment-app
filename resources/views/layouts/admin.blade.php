@@ -90,6 +90,7 @@
 
         <!-- BEGIN: Page Vendor JS-->
         <script src="{{asset('dashboard/vendors/js/extensions/toastr.min.js')}}"></script>
+        <script src="{{asset('dashboard/js/scripts/extensions/ext-component-toastr.js')}}"></script>
         <!-- END: Page Vendor JS-->
         <script src="{{asset('dashboard/js/scripts/pages/app-user-list.js')}}"></script>
 

@@ -78,9 +78,13 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+        Role::where('id',$id)->update([
+            'name' => $request->name,
+        ]);
+        return response()->json(['code'=>200, 'message'=>'Role Created successfully'], 200);
+
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('web.site.layouts.app')
+@extends('layouts.site')
 
 @section('title', 'زعتر - أفضل موقع طبخ ووصفات في العالم العربي')
 

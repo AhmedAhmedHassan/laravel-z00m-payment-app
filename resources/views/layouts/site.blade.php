@@ -28,13 +28,13 @@
 
 <div id="wrapper" class="clearfix">
 
-    @include('web.site.includes.header')
+    @include('includes.site.header')
 
-    @include('web.site.includes.slider')
+    @include('includes.site.slider')
 
     @yield('content')
 
-    @include('web.site.includes.footer')
+    @include('includes.site.footer')
 
 </div>
 
