@@ -37,6 +37,7 @@
             {{-- Dashboard --}}
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{url('admin/')}}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Home</span></a>
             </li>
+            @role('admin')
             {{-- Roles and Permissions --}}
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Roles &amp; Permissions</span><i data-feather="more-horizontal"></i>
             </li>
@@ -48,8 +49,32 @@
                     </li>
                 </ul>
             </li>
+            {{-- Zoom --}}
+            <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Zoom Integration</span><i data-feather="more-horizontal"></i>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="shield"></i><span class="menu-title text-truncate" data-i18n="Roles &amp; Permission">Zoom</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{route('admin.meeting.index')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Roles">all meetings</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{route('admin.meeting.create')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Roles">Create zoom meeting</span></a>
+                    </li>
+                </ul>
+            </li>
+            @endrole
            
+            @role('user')
+            {{-- Wallet --}}
+            <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">wallet</span><i data-feather="more-horizontal"></i>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="shield"></i><span class="menu-title text-truncate" data-i18n="Roles &amp; Permission">walet</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{route('user.wallet.create')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Roles">recharge</span></a>
+                    </li>
+                </ul>
+            </li>
+            @endrole
         </ul>
     </div>
+    
 </div>
 <!-- END: Main Menu-->
