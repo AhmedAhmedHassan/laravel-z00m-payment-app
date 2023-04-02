@@ -60,6 +60,15 @@
                     </li>
                 </ul>
             </li>
+             {{-- Send mail --}}
+             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Cron job (send mail)</span><i data-feather="more-horizontal"></i>
+             </li>
+             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="shield"></i><span class="menu-title text-truncate" data-i18n="Mail">Email</span></a>
+                 <ul class="menu-content">
+                     <li><a class="d-flex align-items-center" href="{{route('admin.email.create')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Roles">Send mail</span></a>
+                     </li>
+                 </ul>
+             </li>
             @endrole
            
             @role('user')

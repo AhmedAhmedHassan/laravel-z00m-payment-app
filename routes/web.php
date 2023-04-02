@@ -25,6 +25,9 @@ Route::middleware(['auth','role:admin'])->name('admin.')->prefix('admin')->group
     Route::get('meetings',[App\Http\Controllers\Web\Admin\MeetingController::class,'index'])->name('meeting.index');
     Route::get('meeting/create',[App\Http\Controllers\Web\Admin\MeetingController::class,'create'])->name('meeting.create');
     Route::post('meeting/store',[App\Http\Controllers\Web\Admin\MeetingController::class,'store'])->name('meeting.store');
+    Route::get('email/create',[App\Http\Controllers\Web\Admin\EmailController::class,'create'])->name('email.create');
+    Route::post('email/store',[App\Http\Controllers\Web\Admin\EmailController::class,'store'])->name('email.store');
+
 });
 
 // User Routes
